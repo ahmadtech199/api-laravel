@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 ///test git
 
+// test newbranch
+
 class AuthController extends Controller
 {
     /**
