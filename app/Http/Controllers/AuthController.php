@@ -69,6 +69,12 @@ class AuthController extends Controller
 
         return response()->json(['status' => 'user profile was updated', "user" => auth()->user()], 200);
     }
+    // // update acount user
+    // public function update(Request $request)
+    // {
+    //     auth()->user()->update($request->all());
+    //     return response()->json(auth()->user());
+    // }
 
     /**
      * Log the user out (Invalidate the token).
