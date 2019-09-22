@@ -18,7 +18,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login' , 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     /**
@@ -57,6 +57,19 @@ class AuthController extends Controller
         return response()->json(auth()->user());
     }
 
+    // update account
+    public function update(Request $request)
+    {
+
+        auth()->user()->update($request->all());
+        // User::update([
+        //     'name' => request('name'),
+        //     'email' => request('email'),
+        // ]);
+
+        return response()->json(['status' => 'user profile was updated', "user" => auth()->user()], 200);
+    }
+
     /**
      * Log the user out (Invalidate the token).
      *
@@ -93,6 +106,6 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => auth()->user()
-        ]); 
+        ]);
     }
 }
